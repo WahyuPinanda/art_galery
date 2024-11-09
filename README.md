@@ -16,6 +16,7 @@ bash
 npm start
 
 Endpoint API
+
 1. Tambah Gambar
 Endpoint: /api/images
 Method: POST
