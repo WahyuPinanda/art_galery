@@ -39,6 +39,6 @@ jobs:
 
       - name: Deploy to Google App Engine
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }} # Ini harus ada!
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
         run: |
           gcloud app deploy app.yaml
