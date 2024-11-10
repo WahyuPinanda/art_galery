@@ -23,14 +23,12 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
+          workload_identity_provider: 'principalSet://iam.googleapis.com/projects/469833925357/locations/global/workloadIdentityPools/github-action/attribute.repository/WahyuPinanda/art_gallery'
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          export_default_credentials: true
+          project_id: ${{ secrets.GCP_PROJECT_ID }} 
 
       - name: Install dependencies
         run: npm install
