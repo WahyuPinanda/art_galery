@@ -23,12 +23,13 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: 'principalSet://iam.googleapis.com/projects/469833925357/locations/global/workloadIdentityPools/github-action/attribute.repository/WahyuPinanda/art_gallery'
+          workload_identity_provider: 'projects/469833925357/locations/global/workloadIdentityPools/github-action-provider/providers/github-action-provider'
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT_EMAIL }}
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }} 
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Install dependencies
         run: npm install
@@ -38,6 +39,6 @@ jobs:
 
       - name: Deploy to Google App Engine
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }} # Ini harus ada!
         run: |
           gcloud app deploy app.yaml
